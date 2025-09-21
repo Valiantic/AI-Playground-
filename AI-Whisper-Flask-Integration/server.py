@@ -12,3 +12,5 @@ def transcribe_audio():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+# transcribing a local audio file by using flask server 

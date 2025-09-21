@@ -9,7 +9,6 @@ processor = AutoProcessor.from_pretrained("Salesforce/blip-image-captioning-base
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
 # URL of the page to scrape
-# double check the URL you want to scrape to avoid blank captions generations
 url = "https://myheroacademia.fandom.com/wiki/Tamashiro"
 # Download the page
 response = requests.get(url)
@@ -21,12 +20,11 @@ soup = BeautifulSoup(response.text, 'html.parser')
 img_elements = soup.find_all('img')
 
 # Iterate over each img elements
-# Open a file to write the captions
 with open("captions.txt", "w") as caption_file:
     # Iterate over each img element
     for img_element in img_elements:
         img_url = img_element.get('src')
-        # Skip if the image is an SVG or too small (likely an icon)
+        # Skip if img_url is None or empty
         if 'svg' in img_url or '1x1' in img_url:
             continue
         # Correct the URL if it's malformed

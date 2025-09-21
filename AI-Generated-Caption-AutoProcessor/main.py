@@ -11,7 +11,7 @@ img_path = "C:/Users/HP/Website&App for portfolio/AI-Playground/AI-Generated-Cap
 # convert it into an RGB format 
 image = Image.open(img_path).convert('RGB')
 
-# You do not need a question for image captioning
+# Don't add question mark on the text 
 text = "the image of"
 inputs = processor(images=image, text=text, return_tensors="pt")
 
